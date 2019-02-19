@@ -1,3 +1,5 @@
 data/
 apikey
 .idea/
+__pycache__/
+*.html
