@@ -1,9 +1,11 @@
 import datetime
-from api_client import APIclient
+
+import numpy as np
 import pandas as pd
 from nltk import ngrams
-import numpy as np
-from utils import next_prime
+
+from api_client import APIclient
+from playground.utils import next_prime
 
 #############################
 # get the data from mongoDB #

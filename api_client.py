@@ -37,9 +37,16 @@ class APIclient(object):
 
         return summary
 
-    def fetch(self, query, projections):
-        res = self.dbclient[self.db_name][self.collection].find(query, projections)
+    def fetch(self, query, projections={}):
+        if projections != {}:
+            res = self.dbclient[self.db_name][self.collection].find(query, projections)
+        else:
+            res = self.dbclient[self.db_name][self.collection].find(query)
         return pd.DataFrame(list(res))
+
+    def aggregate(self, pipeline):
+        res = self.dbclient[self.db_name][self.collection].aggregate(pipeline)
+        return res
 
     def get_data_from_api(self, y_from, y_to, m_from=1, m_to=12):
         years = range(y_from, y_to+1)
