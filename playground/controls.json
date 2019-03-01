@@ -1,6 +1,8 @@
 {
   "axis": [
-    "pub_date",
+    "pub_date: time",
+    "section_name",
+    "keyword.value",
     "document_type"
   ],
   "news_desk": [

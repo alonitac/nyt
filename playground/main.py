@@ -45,18 +45,6 @@ def headline_contains():
         query.pop('headline.main')
 
 
-# def select():
-#     query['pub_date'] = {'$lte': datetime.datetime(year.value, 12, 31),
-#                          '$gte': datetime.datetime(year.value, 1, 1)}
-#
-#     projections[x_axis.value] = 1
-#     projections[y_axis.value] = 1
-#     projections['headline.main'] = 1
-#
-#     res = api_client.fetch(query, projections)
-#     return res
-
-
 def get_publish_table(cat):
     res = api_client.fetch({'pub_date': {'$lte': datetime.datetime(year.value, 12, 31),
                                          '$gte': datetime.datetime(year.value, 1, 1)}},
