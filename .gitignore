@@ -2,6 +2,5 @@ data/
 apikey
 .idea/
 __pycache__/
-*.html
 *.pkl
 playground/*
