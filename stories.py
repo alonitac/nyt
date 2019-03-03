@@ -1,19 +1,23 @@
+import time
 from bokeh.models import ColumnDataSource, TapTool, OpenURL
 from bokeh.layouts import gridplot
 from bokeh.plotting import figure, save, output_file
-
+t = time.time()
 
 stories_in_page = 40
 files_count = 0
 
 """
 To display your stories, change variable `stories` bellow according to the following:
-1. stories must be a LIST OF DATAFRAMES
-2. each dataframe must have columns of the names - `by`, `pub_date`, `headline`, `url`
+1. stories must be a LIST OF DATAFRAMES. 
+   Each df represents a story. It's rows are the articles that belongs to that story.
+2. Each dataframe must have columns of the names - `by`, `pub_date`, `headline`, `url`
 """
 from minhash_lsh import MinHashLSH  # comment this when changing source of stories
 minhash = MinHashLSH()  # comment this when changing source of stories
+
 stories = minhash.get_similar_stories(2018, 2018)
+print('{} stories were found'.format(len(stories)))
 
 
 def save_stories(grid):
@@ -25,9 +29,6 @@ def save_stories(grid):
 
 TOOLTIPS = """
     <div id="Tooltip">
-        <div>
-            <span style="font-size: 10px;">@by</span>
-        </div>
         <div>
             <span style="font-size: 16px; font-weight: bold;">@headline</span>
         </div>
@@ -55,3 +56,5 @@ for i, story in enumerate(stories):
     grid.append([p])
 
 save_stories(grid)
+
+print('time took: {}'.format(time.time() - t))
